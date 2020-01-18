@@ -12,7 +12,7 @@
                 constructor(props){
                     super(props);
                     this.state = {
-                        fisrt : Math.ceil(Math.random()*10),
+                        first : Math.ceil(Math.random()*10),
                         second : Math.ceil(Math.random()*10),
                         value : '',
                         result : '',
@@ -22,9 +22,9 @@
 
                 onSubmit = (e) =>{
                     e.preventDefault();
-                    if(parseInt(this.state.value) === this.state.fisrt * this.state.second){
+                    if(parseInt(this.state.value) === this.state.first * this.state.second){
                         this.setState({
-                            fisrt : Math.ceil(Math.random()*10),
+                            first : Math.ceil(Math.random()*10),
                             second : Math.ceil(Math.random()*10),
                             value : '',
                             result : "정답!",
@@ -59,7 +59,7 @@
             }
         </script>
         <script type="text/babel">
-        ReactDOM.render(<GuGuDan />, document.querySelector("#root"));
+            ReactDOM.render(<GuGuDan />, document.querySelector("#root"));
         </script>
     </body>
 </html>
