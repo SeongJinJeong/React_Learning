@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    </head>
+    <body>
+        <div id="root"></div>    
+    
+        <script type = "text/babel">
+            class Example03 extends React.Component{
+                constructor(props){
+                    super(props);
+                    this.state = {
+                        name : '',
+                    }
+                }
+
+                reName = () => {
+                    return this.state.name + "일까요?";
+                }
+
+                render(){
+                    return (
+                        <div>
+                            <div> {this.state.name} </div>
+                            <div> {this.reName} </div>
+                        </div>
+                    )
+                }
+            }
+        </script>
+        <script type="text/babel">
+            ReactDOM.render(<Example03 />, document.querySelector("#root"))
+        </script>

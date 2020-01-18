@@ -132,3 +132,88 @@ React 정리
         - HTML 태그와 컴포넌트의 비교법
             1. 앞에 알파벳이 대문자로 시작하면 Component
             2. 앞에 알파벳이 소문자로 시작하면 HTML Tag
+
+* Day03
+    - 구구단 게임 만들기
+        ex)
+            <script type="text/babel">
+
+            class GuGuDan extends React.Component {
+                constructor(props){
+                    super(props);
+                    this.state = {
+                        fisrt : Math.ceil(Math.random()*10),
+                        second : Math.ceil(Math.random()*10),
+                        value : '',
+                        result : '',
+                    };
+                }
+
+
+                onSubmit = (e) =>{
+                    e.preventDefault();
+                    if(parseInt(this.state.value) === this.state.fisrt * this.state.second){
+                        this.setState({
+                            fisrt : Math.ceil(Math.random()*10),
+                            second : Math.ceil(Math.random()*10),
+                            value : '',
+                            result : "정답!",
+                        })
+                    }
+                    else {
+                        this.setState({
+                            value : '',
+                            result : "오답!"
+                        })
+                    }
+                }
+
+                onChange = (e)=>{
+                    this.setState({
+                        value : e.target.value,
+                    })
+                }
+
+                render(){
+                   return (
+                       <div>
+                            <div>{this.state.first} 곱하기 {this.state.second} 는?</div>
+                            <form onSubmit = {this.onSubmit}>
+                                <input type="number" value = {this.state.value} onChange = {this.onChange} />
+                                <button> 입력! </button>
+                            </form>
+                            <div>{this.state.result}</div>
+                       </div>
+                   )
+                };
+            }
+        </script>
+        <script type="text/babel">
+            ReactDOM.render(<GuGuDan />, document.querySelector("#root"));
+        </script>    
+
+    - 클래스 메소드 ( Class Method )
+        1. 리엑트에서는 render() 안에 직접 자바스크립트 코드를 적는것은 피해야 함.
+        2. 클래스 안에 새로운 메소드로 생성하고, render() 에 넣어주는 것이 적합
+            ex)
+                class Example03 extends React.Component{
+                    constructor(props){
+                        super(props);
+                        this.state = {
+                            name : '',
+                        }
+                    }
+
+                    rename = () => {
+                        return this.state.name + "일까요?";
+                    }
+
+                    render(){
+                        return (
+                            <div>
+                                <div> {this.state.name} </div>
+                                <div> {this.rename} </div>
+                            </div>
+                        )
+                    }
+                }
