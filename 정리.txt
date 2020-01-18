@@ -273,3 +273,36 @@ React 정리
             - this.setState() 안에 화살표 함수 넣기
             - 화살표 함수의 인자로 prevState 넣기
             - this.state 부분을 prevState 로 바꾸기
+
+    - DOM 에 접근하는 방법
+        1. input 태그 안에 ref 를 넣어준다.
+            ex) 
+                input;
+
+                render(){
+                    return (
+                        <input type="number" onChange = {this.onChange} value = {this.state.value} ref = {(c)=>{this.input = c}} />
+                    )
+                }
+        
+        2. class 내의 메소드에 input 을 추가시킨다.
+        3. 메소드 내에서 state 변화가 일어날 때, 같이 해당 메소드를 실행시켜준다.
+            ex)
+                if(parseInt(this.state.value) === this.state.first * this.state.second){
+                    this.setState((prevState) => {
+                        return {
+                            first : Math.ceil(Math.random()*10),
+                            second : Math.ceil(Math.random()*10),
+                            value : '',
+                            result : prevState.value + "정답!",
+                        }
+                    })
+                    this.input.focus();
+                }
+                else {
+                    this.setState({
+                        value : '',
+                        result : "오답!",
+                    })
+                    this.input.focus();
+                }
