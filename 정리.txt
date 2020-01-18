@@ -242,3 +242,34 @@ React 정리
                         </React.Fragment>
                     )
                 }
+
+    - 함수형 setState
+        1. setState 안에 this.state 를 사용할 경우, 적용되지 않을 수 있음
+        2. setState 함수는 비동기이기 때문에 this.state 가 들어갈 경우, 함수를 사용해야 함.
+
+            ex) 함수 미사용
+                if(parseInt(this.state.value) === this.state.first * this.state.second){
+                    this.setState({
+                        first : Math.ceil(Math.random()*10),
+                        second : Math.ceil(Math.random()*10),
+                        value : '',
+                        result : this.state.value + "정답!",
+                    })
+                }
+
+            ex) 함수 사용
+                if(parseInt(this.state.value) === this.state.first * this.state.second){
+                    this.setState((prevState) => {
+                        return {
+                            first : Math.ceil(Math.random()*10),
+                            second : Math.ceil(Math.random()*10),
+                            value : '',
+                            result : prevState.value + "정답!",
+                        }
+                    })
+                }
+    
+        3. 사용법
+            - this.setState() 안에 화살표 함수 넣기
+            - 화살표 함수의 인자로 prevState 넣기
+            - this.state 부분을 prevState 로 바꾸기
