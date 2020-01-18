@@ -142,7 +142,7 @@ React 정리
                 constructor(props){
                     super(props);
                     this.state = {
-                        fisrt : Math.ceil(Math.random()*10),
+                        first : Math.ceil(Math.random()*10),
                         second : Math.ceil(Math.random()*10),
                         value : '',
                         result : '',
@@ -152,9 +152,9 @@ React 정리
 
                 onSubmit = (e) =>{
                     e.preventDefault();
-                    if(parseInt(this.state.value) === this.state.fisrt * this.state.second){
+                    if(parseInt(this.state.value) === this.state.first * this.state.second){
                         this.setState({
-                            fisrt : Math.ceil(Math.random()*10),
+                            first : Math.ceil(Math.random()*10),
                             second : Math.ceil(Math.random()*10),
                             value : '',
                             result : "정답!",
@@ -216,4 +216,29 @@ React 정리
                             </div>
                         )
                     }
+                }
+
+    - Fragment 를 사용해 쓸모없는 DIV 태그 없애기
+        1. 리엑트는 두 개 이상의 태그가 한 태그안에 포함되어 있지 않을 경우, 에러가 발생됨
+        2. 위 에러를 해결하기 위해 <div> 를 상단에 추가했었는데, Fragment 를 사용할 경우, 문제가 해결됨
+        3. Fragment 사용법
+            ex)
+                render(){
+                    return (
+                        <>
+                            <div> {this.state.name} </div>
+                            <div> {this.rename} </div>
+                        </>
+                    )
+                }
+
+        4. Babel 이 위 문법을 지원을 하지 않을 경우
+            ex)
+                render(){
+                    return (
+                        <React.Fragment>
+                            <div> {this.state.name} </div>
+                            <div> {this.rename} </div>
+                        </React.Fragment>
+                    )
                 }

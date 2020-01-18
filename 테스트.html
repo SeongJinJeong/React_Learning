@@ -8,28 +8,26 @@
         <div id="root"></div>    
     
         <script type = "text/babel">
-            class Example03 extends React.Component{
+            class Homework extends React.Component {
                 constructor(props){
                     super(props);
                     this.state = {
-                        name : '',
+                        _isLike : false,
                     }
-                }
-
-                reName = () => {
-                    return this.state.name + "일까요?";
                 }
 
                 render(){
                     return (
-                        <div>
-                            <div> {this.state.name} </div>
-                            <div> {this.reName} </div>
-                        </div>
+                        <button onClick = {()=>this.setState({_isLike : true})} > 
+                        
+                        {this.state._isLike ? "Liked" : "Like"}
+                        
+                        </button>
                     )
                 }
             }
         </script>
-        <script type="text/babel">
-            ReactDOM.render(<Example03 />, document.querySelector("#root"))
+
+        <script type = "text/babel">
+        ReactDOM.render(<Homework /> , document.querySelector("#root"))
         </script>
