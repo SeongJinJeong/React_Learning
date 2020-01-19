@@ -377,3 +377,7 @@ React 정리
                         </React.Fragment>
                     )
                 }
+
+        5. Hooks 의 장단점
+            - Hooks 는 Class 와 다르게 state 가 바뀌면 함수 자체가 전부 다시 실행되기 때문에 Class 보다 느릴 수 있음
+            
