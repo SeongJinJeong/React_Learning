@@ -306,3 +306,74 @@ React 정리
                     })
                     this.input.focus();
                 }
+
+* Day 04
+    - 함수형 컴포넌트
+        1. setState 와 ref 를 포함하지 않을 떄, 함수형 컴포넌트 생성 가능
+        2. React.Component 로 생성하는 것보다 편리하고 빠르게 생성 가능
+            ex)
+                <script type="text/babel">
+                    const HelloWorld = () => {
+                        return <div>Hello World </div>;
+                    }
+                </script>
+
+                <script type="text/babel">
+                    ReactDOM.render(<HelloWorld />, document.querySelector("#root"))
+                </script>
+
+    - HOOKS
+        1. 함수형 컴포넌트에서 사용 불가능했던 state 와 ref 를 사용 가능하게 하는 방법
+        2. class 로 생성하는 컴포넌트보다 짧은 코드로 구현 가능
+        3. Hooks 사용법
+            - state : const [ "state 인자" , " 해당 인자의 setState "] = React.useState("초기값");
+                ex) const [ first , setFirst ] = React.useState("null");
+            
+            - ref : const " ref이름 " = React.useRef("초기값");
+                ex) const refInput = React.useRef("null");
+
+            - ref : REF이름.current.DOM명령어
+                ex) refInput.current.focus();
+            
+        4. Hooks 로 만드는 구구단
+            ex)
+                const GuGuDan = () =>{
+                    const [ first , setFirst ] = React.useState(Math.ceil(Math.random()*10));
+                    const [ second , setSecond ] = React.useState(Math.ceil(Math.random()*10));
+                    const [ value , setValue ] = React.useState('');
+                    const [ result , setResult ] = React.useState('');
+                    const refInput = React.useRef(null);
+
+                    const onSubmitForm = (e) =>{
+                        e.preventDefault;
+                        if(parseInt(value) === fisrt * second){
+                            setFirst(Math.ceil(Math.random()*10));
+                            setSecond(Math.ceil(Math.random()*10));
+                            setValue('');
+                            setResult("정답!"+value);
+                        } else {
+                            setValue('');
+                            setResult("오답");
+                        }
+                    };
+
+                    const onChangeInput = (e) => {
+                        setValue(e.target.value);
+                    }
+
+                    return (
+                        <React.Fragment>
+                            <div>{first} 곱하기 {second} 는? </div>
+                            <form onSubmit = {onSubmitForm}>
+                                <input 
+                                    type = "number"
+                                    value = {value}
+                                    onChange = {onChangeInput}
+                                    ref = {refInput}
+                                />
+                                <button>입력</button>
+                            </form>
+                            <div>{result}</div>
+                        </React.Fragment>
+                    )
+                }
