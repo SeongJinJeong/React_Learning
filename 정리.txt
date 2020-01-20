@@ -472,3 +472,8 @@ React 정리
                         filename : 'app.js',
                     },
                 }
+
+* Day 05
+    - 노마드 코더의 강의 따라하기
+    - creat-react-app 으로 빠른 설정 후, 리엑트로 앱 제작
+    - App.js 까지 구축 완료
