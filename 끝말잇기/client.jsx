@@ -1,5 +1,5 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
-const worldRelay = require('./wordRelay.jsx');
+const WorldRelay = require('./wordRelay.jsx');
 
-ReactDOM.render(<worldRelay />, document.querySelector("#root"));
+ReactDOM.render(<WorldRelay />, document.querySelector("#root"));
