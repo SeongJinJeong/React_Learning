@@ -1,37 +1,10 @@
 import React from 'react';
 import LinesEllipsis from 'react-lines-ellipsis';
 import PropTypes from 'prop-types';
+import './movie.css'
 
 
-/*class Movie extends React.Component {
-    state = {
 
-    };
-
-    _poster = () => {
-        return (
-            <div className = "poster">
-                {this.props.poster}
-            </div>
-        )
-    }
-
-    _subscript = () => {
-        return (
-            <div>
-                <div className = "title">
-                    {this.props.title}
-                </div>
-                <div className = "genres">
-                    {this.props.genres}
-                </div>
-                <div className = "desc">
-                    {this.props.desc}
-                </div>
-            </div>
-        )
-    }
-*/
 
 
 const Movie = ({poster,title,genres,desc}) => {
@@ -41,7 +14,7 @@ const Movie = ({poster,title,genres,desc}) => {
                 <MoviePoster poster={poster} alt={title} />
             </div>   
             <div className="Movie__Column">
-                <h1>{title}</h1>
+                <h1 id =" title">{title}</h1>
                 <div className="Movie__Genres">
                     {genres.map((genre, index) => <MovieGenre genre={genre} key={index} />)}
                 </div>
