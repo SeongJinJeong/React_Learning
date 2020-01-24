@@ -3,14 +3,13 @@ import path from 'path';
 module.exports = {
     name : "gugudan_training",
     mode : "development",
-    devtool : 'fast' ,
+    devtool : 'eval' ,
     resolve : {
         extensions : ['.js','.jsx']   
     },
 
     entry : {
-        app : ['',''],
-
+        app : './client',
     },
 
     module : {
